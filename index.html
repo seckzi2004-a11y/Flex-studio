@@ -1,0 +1,392 @@
+<html>
+  <!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLEX STUDIO - Production Thiès Pout</title>
+</head>
+<body>
+  <!-- ANIMATION INTRO FLEX STUDIO -->
+<div id="intro-flex">
+<img src="logo png.png" alt="flex studio" id="logo-intro">
+<div id="welcome-block">
+  <h2> <strong>BIENVENUE</strong></h2>
+  <button id="enter-btn">Entre </button>
+</div>
+</div>
+<main>
+    <h1>Bienvenue</h1>
+    <p>Flex Studio</p>
+</main>
+  <style>
+    /* Grille Masonry qui s'adapte à la photo */
+.masonry-grid {
+    columns: 3 300px;
+    column-gap: 20px;
+    padding: 20px 50px;
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.masonry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(229, 9, 20, 0.4);
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto; /* La magie: s'adapte à la forme */
+    display: block;
+}
+
+.item-info {
+    padding: 15px;
+    color: #fff;
+}
+
+.item-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.item-info p {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+/* Popup Album */
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 10000;
+    overflow-y: auto;
+    padding: 50px 20px;
+}
+
+.popup.active {
+    display: block;
+}
+
+.popup-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.close-popup {
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+#popup-title {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.popup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.popup-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+   .masonry-grid { columns: 2 150px; padding: 20px; }
+}
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #000000;
+  color: #e2e8f0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+header {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(45deg, #780000, #003049);
+}
+header h1 { font-size: 3rem; margin-bottom: 10px; }
+nav {
+  background: #780000;
+  padding: 15px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
+nav a {
+  color: #FFFFFF;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+nav a:hover { color: #000000; }
+section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+h2 { 
+  text-align: center; 
+  font-size: 2.5rem; 
+  margin-bottom: 40px; 
+  color: #FFFFFF;
+}
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.projet {
+  background: #202020;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.projet img, .projet iframe { width: 100%; display: block; }
+.projet h3 { padding: 15px; text-align: center; }
+.btn-whatsapp {
+  display: block;
+  width: 250px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #25D366;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+}
+#contact { text-align: center; } 
+/* ANIMATION INTRO */
+#intro-flex {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    gap: 30px;
+}
+
+#logo-intro {
+    width: 300px;
+    max-width: 80%;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: zoomInLogo 1.2s ease 0.3s forwards;
+}
+
+#welcome-block {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: showWelcome 0.8s ease 1.8s forwards;
+}
+
+#welcome-block h2 {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 25px;
+    letter-spacing: 3px;
+}
+
+#enter-btn {
+    background: linear-gradient(90deg, #e50914, #b20710);
+    color: #fff;
+    border: none;
+    padding: 14px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin: 0 auto;
+}
+
+#enter-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+}
+
+#intro-flex.hide {
+    animation: fadeOut 0.6s ease forwards;
+}
+
+@keyframes zoomInLogo {
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes showWelcome {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+  </style>
+  <link rel="stylesheet" href="style.css">
+  <header>
+    <h1>FLEX STUDIO</h1>
+    <p>Production • Photographe • Clips-Vidéo • Design • Thiés-Pout</p>
+  </header>
+
+  <section id="realisations"></section>
+  <nav>
+    <a href="#realisations">Réalisations</a>
+    <a href="#clips">Clips</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main id="main-content">
+    <h1>Réalisations</h1>
+
+    <div class="masonry-grid">
+        <!-- COLONNE 1: LOGO -->
+        <div class="masonry-item" data-album="album1">
+            <img src="https://user9323.na.imgto.link/public/20260423/sira.avif" alt="Logo">
+            <div class="item-info">
+                <h3>Logo</h3>
+                <p>By Flex Studio</p>
+            </div>
+        </div>
+
+        <!-- COLONNE 2: CARTE VISITE -->
+        <div class="masonry-item" data-album="album2">
+            <img src="https://user9323.na.imgto.link/public/20260423/carte-ibou-r-cup-r.avif" alt="Carte Visite">
+            <div class="item-info">
+                <h3>Carte Visite</h3>
+                <p>By Flex Studio</p>
+            </div>
+        </div>
+
+        <!-- COLONNE 3: AFFICHE -->
+        <div class="masonry-item" data-album="album3">
+            <img src="https://user9323.na.imgto.link/public/20260424/img-5872-1.avif" alt="Affiche Concert">
+            <div class="item-info">
+                <h3>Affiche Concert</h3>
+                <p>By A.B.S</p>
+            </div>
+        </div>
+
+       <!-- COLONNE 4: Shooting -->
+        <div class="masonry-item" data-album="album4">
+            <img src="https://www.image2url.com/r2/default/images/1776989004530-2d70a50d-84e4-467d-b430-33dd5ad334d6.blob" alt="Affiche">
+            <div class="item-info">
+                <h4>Shooting</h4>
+                <p>By Laye Capo</p>
+            </div>
+        </div> 
+        
+        <!-- COLONNE 5: Flyers Anniverssaire -->
+        <div class="masonry-item" data-album="album5">
+            <img src="https://user9323.na.imgto.link/public/20260424/img-5656-1.avif" alt="Affiche">
+            <div class="item-info">
+                <h4>Flyers Anniverssaire</h4>
+                <p>By Yusuf Design</p>
+            </div>
+        </div>
+
+         <!-- COLONNE 6: AFFICHE -->
+        <div class="masonry-item" data-album="album6">
+            <img src="https://user9323.na.imgto.link/public/20260423/delice.avif" alt="Affiche Concert">
+            <div class="item-info">
+                <h3>Affiche</h3>
+                <p>By Zoo Natal</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<!-- POPUP ALBUM qui s'ouvre au clic -->
+<div id="album-popup" class="popup">
+    <span class="close-popup">&times;</span>
+    <div class="popup-content">
+        <h2 id="popup-title"></h2>
+        <div id="popup-grid" class="popup-grid"></div>
+    </div>
+</div>
+</section>
+  <section id="contact">
+    <h2> FLEX STUDIO</h2>
+    <a href="https://wa.me/221784564853" class="btn-whatsapp">WhatsApp Direct</a>
+    <p>Email: contact@flexstudio.sn</p>
+    <p>Thès, Pout, Sénégal</p>
+  </section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('enter-btn');
+    const intro = document.getElementById('intro-flex');
+    
+    btn.onclick = function() {
+        intro.classList.add('hide');
+        console.log('Bouton cliqué'); // Pour tester
+    }
+});
+</script>
+<script>
+// Base de données des albums
+const albums = {
+    album: {
+        title: "Logo",
+        photos: ["", "", ""]
+    },
+    album: {
+        title: "Shooting", 
+        photos: ["", "",""]
+    },
+    album6: {
+        title: "Affiche",
+        photos: ["Levre rose.jpg", "", ""]
+    }
+};
+
+// Ouvre l'album au clic
+document.querySelectorAll('.masonry-item').forEach(item => {
+    item.addEventListener('click', () => {
+        const albumId = item.dataset.album;
+        const album = albums[albumId];
+        
+        document.getElementById('popup-title').textContent = album.title;
+        const grid = document.getElementById('popup-grid');
+        grid.innerHTML = '';
+        
+        album.photos.forEach(photo => {
+            grid.innerHTML += `<img src="${photo}" alt="${album.title}">`;
+        });
+        
+        document.getElementById('album-popup').classList.add('active');
+    });
+});
+
+// Ferme la popup
+document.querySelector('.close-popup').addEventListener('click', () => {
+    document.getElementById('album-popup').classList.remove('active');
+});
+</script>
+</body>
+</html>
